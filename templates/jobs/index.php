@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package     Joomla.Site
- * @subpackage  Templates.cassiopeia
+ * @package     Jobs.Site
+ * @subpackage  Templates.jobs
  *
- * @copyright   (C) 2017 Open Source Matters, Inc. <https://www.joomla.org>
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @copyright   (C) 2025 e-logism. <https://www.e-logism.gr>
+ * @license     GNU Generalc License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
@@ -52,22 +52,22 @@ if ($paramsFontScheme) {
         $wa->registerAndUseStyle('fontscheme.current', $paramsFontScheme, [], ['rel' => 'lazy-stylesheet', 'crossorigin' => 'anonymous']);
 
         if (preg_match_all('/family=([^?:]*):/i', $paramsFontScheme, $matches) > 0) {
-            $fontStyles = '--cassiopeia-font-family-body: "' . str_replace('+', ' ', $matches[1][0]) . '", sans-serif;
-			--cassiopeia-font-family-headings: "' . str_replace('+', ' ', $matches[1][1] ?? $matches[1][0]) . '", sans-serif;
-			--cassiopeia-font-weight-normal: 400;
-			--cassiopeia-font-weight-headings: 700;';
+            $fontStyles = '--jobs-font-family-body: "' . str_replace('+', ' ', $matches[1][0]) . '", sans-serif;
+			--jobs-font-family-headings: "' . str_replace('+', ' ', $matches[1][1] ?? $matches[1][0]) . '", sans-serif;
+			--jobs-font-weight-normal: 400;
+			--jobs-font-weight-headings: 700;';
         }
     } elseif ($paramsFontScheme === 'system') {
         $fontStylesBody    = $this->params->get('systemFontBody', '');
         $fontStylesHeading = $this->params->get('systemFontHeading', '');
 
         if ($fontStylesBody) {
-            $fontStyles = '--cassiopeia-font-family-body: ' . $fontStylesBody . ';
-            --cassiopeia-font-weight-normal: 400;';
+            $fontStyles = '--jobs-font-family-body: ' . $fontStylesBody . ';
+            --jobs-font-weight-normal: 400;';
         }
         if ($fontStylesHeading) {
-            $fontStyles .= '--cassiopeia-font-family-headings: ' . $fontStylesHeading . ';
-    		--cassiopeia-font-weight-headings: 700;';
+            $fontStyles .= '--jobs-font-family-headings: ' . $fontStylesHeading . ';
+    		--jobs-font-weight-headings: 700;';
         }
     } else {
         $wa->registerAndUseStyle('fontscheme.current', $paramsFontScheme, ['version' => 'auto'], ['rel' => 'lazy-stylesheet']);
@@ -76,7 +76,7 @@ if ($paramsFontScheme) {
 }
 
 // Enable assets
-$wa->usePreset('template.cassiopeia.' . ($this->direction === 'rtl' ? 'rtl' : 'ltr'))
+$wa->usePreset('template.jobs.' . ($this->direction === 'rtl' ? 'rtl' : 'ltr'))
     ->useStyle('template.active.language')
     ->registerAndUseStyle($assetColorName, 'global/' . $paramsColorName . '.css')
     ->useStyle('template.user')
@@ -92,7 +92,7 @@ $wa->usePreset('template.cassiopeia.' . ($this->direction === 'rtl' ? 'rtl' : 'l
 	}");
 
 // Override 'template.active' asset to set correct ltr/rtl dependency
-$wa->registerStyle('template.active', '', [], [], ['template.cassiopeia.' . ($this->direction === 'rtl' ? 'rtl' : 'ltr')]);
+$wa->registerStyle('template.active', '', [], [], ['template.jobs.' . ($this->direction === 'rtl' ? 'rtl' : 'ltr')]);
 
 // Logo file or site title param
 if ($this->params->get('logoFile')) {
@@ -246,7 +246,7 @@ $wa->getAsset('style', 'fontawesome')->setAttribute('rel', 'lazy-stylesheet');
     <?php endif; ?>
 
     <?php if ($this->params->get('backTop') == 1) : ?>
-        <a href="#top" id="back-top" class="back-to-top-link" aria-label="<?php echo Text::_('TPL_CASSIOPEIA_BACKTOTOP'); ?>">
+        <a href="#top" id="back-top" class="back-to-top-link" aria-label="<?php echo Text::_('TPL_JOBS_BACKTOTOP'); ?>">
             <span class="icon-arrow-up icon-fw" aria-hidden="true"></span>
         </a>
     <?php endif; ?>
